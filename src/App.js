@@ -1,22 +1,15 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import {
-  AppBar,
-  IconButton,
-  MuiThemeProvider,
-  Toolbar,
-  Typography,
-  withStyles,
-} from '@material-ui/core';
-import { Menu } from '@material-ui/icons';
-import Navigation from './Navigation';
-import Home from './Home';
-import Gallery from './Gallery';
-import About from './About';
-import Contact from './Contact';
-import theme from './theme';
-import './App.css';
+import { MuiThemeProvider, withStyles } from '@material-ui/core';
+import AppBarWrapper from './components/AppBarWrapper';
+import Navigation from './pages/Navigation';
+import Home from './pages/Home';
+import Gallery from './pages/Gallery';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import theme from './styles/theme';
+import './styles/App.css';
 
 class App extends Component {
   state = { menuOpen: false, galleryColumns: 2 };
@@ -40,24 +33,12 @@ class App extends Component {
 
   render() {
     const { menuOpen, galleryColumns } = this.state;
-    const { classes } = this.props;
     return (
       <MuiThemeProvider theme={theme}>
         <Router>
           <Fragment>
-            <AppBar className={classes.appBar} position="static">
-              <Toolbar>
-                <IconButton onClick={this.menuToggle} className={classes.menuButton}>
-                  <Menu />
-                </IconButton>
-                <Typography variant="title" className={classes.appBarHeader}>
-                  My Site
-                </Typography>
-              </Toolbar>
-            </AppBar>
-
+            <AppBarWrapper menuToggle={this.menuToggle} />
             <Navigation open={menuOpen} menuToggle={this.menuToggle} />
-
             <Route
               exact
               path="/"
