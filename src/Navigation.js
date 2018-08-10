@@ -27,33 +27,9 @@ const Navigation = props => (
         className={props.classes.navLink}
         onClick={props.menuToggle}
         activeclass="active"
-        to="/family"
+        to="/gallery"
       >
-        <MenuItem className={props.classes.menuItem}>Family</MenuItem>
-      </NavLink>
-      <NavLink
-        className={props.classes.navLink}
-        onClick={props.menuToggle}
-        activeclass="active"
-        to="/children"
-      >
-        <MenuItem className={props.classes.menuItem}>Just the Kids</MenuItem>
-      </NavLink>
-      <NavLink
-        className={props.classes.navLink}
-        onClick={props.menuToggle}
-        activeclass="active"
-        to="/events"
-      >
-        <MenuItem className={props.classes.menuItem}>Events</MenuItem>
-      </NavLink>
-      <NavLink
-        className={props.classes.navLink}
-        onClick={props.menuToggle}
-        activeclass="active"
-        to="/proofing"
-      >
-        <MenuItem className={props.classes.menuItemSec}>Proofing</MenuItem>
+        <MenuItem className={props.classes.menuItem}>Gallery</MenuItem>
       </NavLink>
       <NavLink
         className={props.classes.navLink}

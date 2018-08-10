@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { AppBar, Toolbar, Typography, withStyles } from '@material-ui/core';
-import Gallery from 'react-photo-gallery';
+import PhotoGallery from 'react-photo-gallery';
 import Lightbox from 'react-images';
 
 const photos = [
@@ -16,7 +16,7 @@ const photos = [
   { src: 'https://source.unsplash.com/I1ASdgphUH4/800x599', width: 4, height: 3 },
 ];
 
-class Events extends Component {
+class Gallery extends Component {
   state = { currentImage: 0 };
 
   openLightbox = (event, obj) => {
@@ -48,11 +48,11 @@ class Events extends Component {
         <AppBar className={classes.appBar} position="static">
           <Toolbar>
             <Typography className={classes.PageTitle} color="secondary" variant="title">
-              {'>> Events'}
+              {'>> Gallery'}
             </Typography>
           </Toolbar>
         </AppBar>
-        <Gallery photos={photos} columns={galleryColumns} onClick={this.openLightbox} />
+        <PhotoGallery photos={photos} columns={galleryColumns} onClick={this.openLightbox} />
         <Lightbox
           images={photos}
           onClose={this.closeLightbox}
@@ -82,9 +82,9 @@ const styles = {
   },
 };
 
-export default withStyles(styles)(Events);
+export default withStyles(styles)(Gallery);
 
-Events.propTypes = {
+Gallery.propTypes = {
   classes: PropTypes.instanceOf(Object).isRequired,
   galleryColumns: PropTypes.instanceOf(Array).isRequired,
 };

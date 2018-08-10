@@ -12,10 +12,7 @@ import {
 import { Menu } from '@material-ui/icons';
 import Navigation from './Navigation';
 import Home from './Home';
-import Family from './Family';
-import Children from './Children';
-import Events from './Events';
-import Proofing from './Proofing';
+import Gallery from './Gallery';
 import About from './About';
 import Contact from './Contact';
 import theme from './theme';
@@ -54,7 +51,7 @@ class App extends Component {
                   <Menu />
                 </IconButton>
                 <Typography variant="title" className={classes.appBarHeader}>
-                  Lark Elliott
+                  My Site
                 </Typography>
               </Toolbar>
             </AppBar>
@@ -67,18 +64,9 @@ class App extends Component {
               render={props => <Home {...props} galleryColumns={galleryColumns} />}
             />
             <Route
-              path="/family"
-              render={props => <Family {...props} galleryColumns={galleryColumns} />}
+              path="/gallery"
+              render={props => <Gallery {...props} galleryColumns={galleryColumns} />}
             />
-            <Route
-              path="/children"
-              render={props => <Children {...props} galleryColumns={galleryColumns} />}
-            />
-            <Route
-              path="/events"
-              render={props => <Events {...props} galleryColumns={galleryColumns} />}
-            />
-            <Route path="/proofing" component={Proofing} />
             <Route path="/about" component={About} />
             <Route path="/contact" component={Contact} />
           </Fragment>
