@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {
-  AppBar,
-  Toolbar,
   Button,
   ButtonBase,
   Grid,
@@ -12,18 +10,14 @@ import {
   withStyles,
 } from '@material-ui/core';
 import { Phone, Email } from '@material-ui/icons';
+import AppBarWrapper from '../components/AppBarWrapper';
 
 function Contact(props) {
   const { classes } = props;
   return (
     <Fragment>
-      <AppBar className={classes.appBar} position="static">
-        <Toolbar>
-          <Typography className={classes.PageTitle} color="secondary" variant="title">
-            {'>> Contact'}
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <AppBarWrapper title="Contact" type="secondary" />
+
       <div className={classes.root}>
         <Grid container spacing={8}>
           <Grid item xs={12} sm={6}>

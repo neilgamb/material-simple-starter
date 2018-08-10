@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { AppBar, Toolbar, Typography, withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 import PhotoGallery from 'react-photo-gallery';
 import Lightbox from 'react-images';
+import AppBarWrapper from '../components/AppBarWrapper';
 
 const photos = [
   { src: 'https://source.unsplash.com/2ShvY8Lf6l0/800x599', width: 4, height: 3 },
@@ -42,16 +43,10 @@ class Gallery extends Component {
     });
   };
   render() {
-    const { galleryColumns, classes } = this.props;
+    const { galleryColumns } = this.props;
     return (
       <Fragment>
-        <AppBar className={classes.appBar} position="static">
-          <Toolbar>
-            <Typography className={classes.PageTitle} color="secondary" variant="title">
-              {'>> Gallery'}
-            </Typography>
-          </Toolbar>
-        </AppBar>
+        <AppBarWrapper title="Gallery" type="secondary" />
         <PhotoGallery photos={photos} columns={galleryColumns} onClick={this.openLightbox} />
         <Lightbox
           images={photos}
@@ -66,25 +61,10 @@ class Gallery extends Component {
   }
 }
 
-const styles = {
-  PageTitle: {
-    marginLeft: 180,
-  },
-  appBar: {
-    position: 'absolute',
-    backgroundColor: 'transparent',
-    boxShadow: 'none',
-    top: 0,
-    zIndex: -1,
-  },
-  appBarHeader: {
-    flexGrow: 1,
-  },
-};
+const styles = {};
 
 export default withStyles(styles)(Gallery);
 
 Gallery.propTypes = {
-  classes: PropTypes.instanceOf(Object).isRequired,
   galleryColumns: PropTypes.instanceOf(Array).isRequired,
 };

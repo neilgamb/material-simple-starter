@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { MuiThemeProvider, withStyles } from '@material-ui/core';
+import { MuiThemeProvider } from '@material-ui/core';
 import AppBarWrapper from './components/AppBarWrapper';
 import Navigation from './pages/Navigation';
 import Home from './pages/Home';
@@ -37,7 +36,7 @@ class App extends Component {
       <MuiThemeProvider theme={theme}>
         <Router>
           <Fragment>
-            <AppBarWrapper menuToggle={this.menuToggle} />
+            <AppBarWrapper menuToggle={this.menuToggle} title="My Site" type="primary" />
             <Navigation open={menuOpen} menuToggle={this.menuToggle} />
             <Route
               exact
@@ -57,22 +56,4 @@ class App extends Component {
   }
 }
 
-const styles = {
-  appBar: {
-    backgroundColor: 'transparent',
-    boxShadow: 'none',
-  },
-  appBarHeader: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
-  },
-};
-
-export default withStyles(styles)(App);
-
-App.propTypes = {
-  classes: PropTypes.instanceOf(Object).isRequired,
-};
+export default App;

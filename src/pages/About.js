@@ -1,16 +1,11 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { AppBar, Grid, Paper, Toolbar, Typography, withStyles } from '@material-ui/core';
+import { Grid, Paper, Typography, withStyles } from '@material-ui/core';
+import AppBarWrapper from '../components/AppBarWrapper';
 
 const About = props => (
   <Fragment>
-    <AppBar className={props.classes.appBar} position="static">
-      <Toolbar>
-        <Typography className={props.classes.PageTitle} color="secondary" variant="title">
-          {'>> About'}
-        </Typography>
-      </Toolbar>
-    </AppBar>
+    <AppBarWrapper title="About" type="secondary" />
 
     <div className={props.classes.root}>
       <Grid container spacing={8}>

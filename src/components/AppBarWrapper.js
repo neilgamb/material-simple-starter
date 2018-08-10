@@ -1,25 +1,60 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AppBar, IconButton, Toolbar, Typography, withStyles } from '@material-ui/core';
+import { AppBar, IconButton, Toolbar, Typography, withStyles, withTheme } from '@material-ui/core';
 import { Menu } from '@material-ui/icons';
 
-const AppBarWrapper = props => (
-  <AppBar className={props.classes.appBar} position="static">
-    <Toolbar>
-      <IconButton onClick={props.menuToggle} className={props.classes.menuButton}>
-        <Menu />
-      </IconButton>
-      <Typography variant="title" className={props.classes.appBarHeader}>
-        My Site
-      </Typography>
-    </Toolbar>
-  </AppBar>
-);
+function AppBarWrapper(props) {
+  return (
+    <AppBar
+      // style={{ position: props.type === 'secondary' ? 'absolute' : 'static' }}
+      style={
+        props.type === 'secondary'
+          ? {
+              position: 'absolute',
+              zIndex: -1,
+            }
+          : {
+              position: 'static',
+              zIndex: 0,
+            }
+      }
+      className={props.classes.appBar}
+      position="static"
+    >
+      <Toolbar>
+        {props.type === 'primary' ? (
+          <IconButton onClick={props.menuToggle} className={props.classes.menuButton}>
+            <Menu />
+          </IconButton>
+        ) : null}
+        <Typography
+          style={
+            props.type === 'secondary'
+              ? {
+                  marginLeft: 160,
+                  color: props.theme.palette.text.secondary,
+                }
+              : {
+                  marginLeft: 'auto',
+                  zIndex: 0,
+                  color: props.theme.palette.text.primary,
+                }
+          }
+          variant="title"
+          className={props.classes.appBarHeader}
+        >
+          {props.title}
+        </Typography>
+      </Toolbar>
+    </AppBar>
+  );
+}
 
 const styles = {
   appBar: {
     backgroundColor: 'transparent',
     boxShadow: 'none',
+    top: 0,
   },
   appBarHeader: {
     flexGrow: 1,
@@ -30,11 +65,14 @@ const styles = {
   },
 };
 
-export default withStyles(styles)(AppBarWrapper);
+export default withTheme()(withStyles(styles)(AppBarWrapper));
 
 AppBarWrapper.propTypes = {
   classes: PropTypes.instanceOf(Object).isRequired,
   menuToggle: PropTypes.func,
+  title: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  theme: PropTypes.instanceOf(Object).isRequired,
 };
 
 AppBarWrapper.defaultProps = {
